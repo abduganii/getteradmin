@@ -25,3 +25,4 @@ jobs:
             rm -rf build
             npm run build
             pm2 restart getter-admin
+            
