@@ -1,5 +1,5 @@
 const routes: any = {
-  HOME: "/",
+  HOME: "/index",
   LOGIN: "/login",
   WEBSITE: '/webSites',
   WEBSITEADD: '/webSiteAdd',
