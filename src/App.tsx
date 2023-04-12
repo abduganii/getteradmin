@@ -19,13 +19,15 @@ function App() {
 
   const [page, setPage] = useState<any>('Главная')
 
-  console.log(token)
+
   const hendleSetPage = (value: any): any => {
     setPage(value);
   };
   const hendleSetToken = (value: any): any => {
     setToken(value);
   };
+
+
   return (
     <>
       <GlobalContext.Provider value={{ page, setPage: hendleSetPage, token, setToken: hendleSetToken, }}>

@@ -127,6 +127,18 @@
             }
         }
 
+        &:nth-child(9) {
+            .navbar-link {
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("./assets/images/article.svg");
+                    margin-right: 19px;
+                }
+            }
+        }
 
     }
 

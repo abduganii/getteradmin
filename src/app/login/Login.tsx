@@ -16,8 +16,8 @@ export default function LoginPage() {
             setCookie("accessToken", res.data.accessToken)
             setCookie("user_id", res.data.userId)
             setCookie("refreshToken", res.data.refreshToken)
-            navigate(routes.HOME)
             alert("login seccesfull")
+            navigate(routes.HOME)
         } else {
             alert('failed')
         }

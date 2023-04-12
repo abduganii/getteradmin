@@ -19,6 +19,8 @@ export default function Navbar() {
                 <li className='navbar-item' onClick={() => setPage('Пользователи')}>  <NavLink activeClassName className='navbar-link' to={routes.USERS} >Пользователи   </NavLink> </li>
                 <li className='navbar-item' onClick={() => setPage('Заказы')}>  <NavLink activeClassName className='navbar-link' to={routes.ORDER} >Заказы   </NavLink> </li>
                 <li className='navbar-item' onClick={() => setPage('Категории')}>  <NavLink activeClassName className='navbar-link' to={routes.CATEGORIES} >Категории   </NavLink> </li>
+                <li className='navbar-item' onClick={() => setPage('POSITION')}>  <NavLink activeClassName className='navbar-link' to={routes.POSITION} >POSITION   </NavLink> </li>
+
 
             </ul>
             <p className='navbar-settings'> <NavLink className='navbar-link' to={routes.SETTINGS}>Настройки</NavLink></p>

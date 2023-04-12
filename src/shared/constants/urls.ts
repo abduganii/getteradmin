@@ -5,7 +5,8 @@ const urls = {
     USERS: '/users',
     ARTICLE: '/article',
     CATEGORIES: '/categories',
-    ORDER: '/order'
+    ORDER: '/order',
+    POSITION: '/position'
 }
 
 export default urls;

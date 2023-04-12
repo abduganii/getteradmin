@@ -1,5 +1,5 @@
 const routes: any = {
-  HOME: "/index",
+  HOME: "/",
   LOGIN: "/login",
   WEBSITE: '/webSites',
   WEBSITEADD: '/webSiteAdd',
@@ -22,7 +22,10 @@ const routes: any = {
   ORDER: '/Order',
   CATEGORIES: '/categories',
   ADDCATEGORIES: '/addcategories',
-  UPDATECATEGORIES: '/updatecategories'
+  UPDATECATEGORIES: '/updatecategories',
+  POSITION: '/position',
+  ADDPOSITION: '/addposition',
+  UPDATEPOSITION: '/updateposition'
 };
 
 export default routes;

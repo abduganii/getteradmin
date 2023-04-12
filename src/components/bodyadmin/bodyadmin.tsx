@@ -22,6 +22,9 @@ import OrderList from '../order/oreserlist'
 import Categorylist from '../category/categoryList'
 import CategoryAdd from '../category/categoryAdd'
 import CategoryUpdate from '../category/categoryUpdate'
+import PositionAdd from '../Position/positionAdd'
+import Positionlist from '../Position/positionList'
+import PositionUpdate from '../Position/positionUpdate'
 
 export default function Bodyadmin() {
     return (
@@ -47,6 +50,9 @@ export default function Bodyadmin() {
                         <Route path={routes.CATEGORIES} element={<Categorylist />} />
                         <Route path={routes.ADDCATEGORIES} element={<CategoryAdd />} />
                         <Route path={routes.UPDATECATEGORIES + "/:id"} element={<CategoryUpdate />} />
+                        <Route path={routes.POSITION} element={<Positionlist />} />
+                        <Route path={routes.ADDPOSITION} element={<PositionAdd />} />
+                        <Route path={routes.UPDATEPOSITION + "/:id"} element={<PositionUpdate />} />
 
                         <Route path={routes.ORDER} element={<OrderList />} />
                         <Route path={routes.ABOUTUS} element={<AboutUs />} />
