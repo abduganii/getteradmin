@@ -15,7 +15,7 @@ import { Login } from '@mui/icons-material';
 import LoginPage from './app/login/Login';
 
 function App() {
-  const [token, setToken] = useState<any>(getCookie("accessToken") || false)
+  // const [token, setToken] = useState<any>(getCookie("accessToken") || false)
 
   const [page, setPage] = useState<any>('Главная')
 
@@ -23,15 +23,16 @@ function App() {
   const hendleSetPage = (value: any): any => {
     setPage(value);
   };
-  const hendleSetToken = (value: any): any => {
-    setToken(value);
-  };
+  // const hendleSetToken = (value: any): any => {
+  //   setToken(value);
+  // };
 
 
   return (
     <>
-      <GlobalContext.Provider value={{ page, setPage: hendleSetPage, token, setToken: hendleSetToken, }}>
-        {token ? <Home /> : <LoginPage />}
+      <GlobalContext.Provider value={{ page, setPage: hendleSetPage }}>
+        {/* {token ? <Home /> : <LoginPage />} */}
+        <Home />
       </GlobalContext.Provider>
     </>
   );
