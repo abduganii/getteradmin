@@ -81,7 +81,7 @@ export default function Userslist() {
 
                             <ul ref={x} className='list-item-drop ' style={tr == e.id ? { display: "inline-block", zIndex: 10 } : { display: "none", zIndex: 0 }} >
                                 <li className='list-item-drop-text'>Отменить</li>
-                                {e?.id == getCookie('user_id') ? " " : <li className='list-item-drop-text' onClick={() => handleDelete(e?.id)}> Удалить</li>}
+                                {e?.id == getCookie('admin_id') ? " " : <li className='list-item-drop-text' onClick={() => handleDelete(e?.id)}> Удалить</li>}
                             </ul>
                         </li>
                     ))}

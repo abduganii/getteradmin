@@ -13,9 +13,9 @@ export default function LoginPage() {
         const res = await Loginuser(data)
 
         if (res.status == 200) {
-            setCookie("accessToken", res.data.accessToken)
-            setCookie("user_id", res.data.userId)
-            setCookie("refreshToken", res.data.refreshToken)
+            setCookie("accessAdminToken", res.data.accessToken)
+            setCookie("admin_id", res.data.userId)
+            setCookie("refreshAdminToken", res.data.refreshToken)
             alert("login seccesfull")
             navigate(routes.HOME)
         } else {

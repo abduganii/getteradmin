@@ -4,9 +4,9 @@ import imgplus from "../../assets/images/Groupd48098535.svg";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import routes from '../../shared/constants/routes';
 import { useForm } from 'react-hook-form';
-import { createProtfoio } from '../../shared/api/portfolioapi';
+
 import { removeCookie } from 'typescript-cookie';
-import { createCategory } from '../../shared/api/categories';
+
 import { createPosition } from '../../shared/api/position';
 
 
@@ -33,6 +33,7 @@ export default function PositionAdd() {
 
                     if (response.response.status == 401) {
                         removeCookie('access_token_user')
+                        removeCookie('accessAdminToken')
                         navgate(routes.HOME)
                     }
                 }

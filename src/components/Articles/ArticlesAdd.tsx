@@ -43,7 +43,7 @@ export default function ArticlesAdd() {
 
     const HandleAddPortfolio = async (data: any) => {
         setloading(true)
-        const cooks = getCookie('user_id') || ""
+        const cooks = getCookie('admin_id') || ""
         const arr = tag2.split(' ')
         const formData = new FormData()
         formData.append("file", imgFile)
@@ -66,6 +66,7 @@ export default function ArticlesAdd() {
                 if (response?.response) {
                     if (response.response.status == 401) {
                         removeCookie('access_token_user')
+                        removeCookie('accessAdminToken')
                         navgate(routes.HOME)
                     }
                 }

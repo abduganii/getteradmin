@@ -15,7 +15,7 @@ import { Login } from '@mui/icons-material';
 import LoginPage from './app/login/Login';
 
 function App() {
-  const [token, setToken] = useState<any>(getCookie("accessToken") || false)
+  const [token, setToken] = useState<any>(getCookie("accessAdminToken") || false)
 
   const [page, setPage] = useState<any>('Главная')
 

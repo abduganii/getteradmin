@@ -134,7 +134,7 @@ export default function ArticlesList() {
 
                             <ul ref={x} className='list-item-drop ' style={tr == e?.id ? { display: "inline-block", zIndex: 10 } : { display: "none", zIndex: 0 }} >
                                 {
-                                    e?.user?.id == getCookie('user_id') ? <li className='list-item-drop-text'><Link to={routes.ARTICLESUPDATE + `/${e?.id}`}>Изменить</Link></li> : ""
+                                    e?.user?.id == getCookie('admin_id') ? <li className='list-item-drop-text'><Link to={routes.ARTICLESUPDATE + `/${e?.id}`}>Изменить</Link></li> : ""
                                 }
                                 {e?.isActive ? <li className='list-item-drop-text'>Отменить</li> : <li className='list-item-drop-text'>подтверждать</li>}
                                 <li className='list-item-drop-text' onClick={() => handleDelete(e?.id)}>Удалить</li>

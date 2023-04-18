@@ -1,5 +1,5 @@
 const urls = {
-    LOGIN: `/auth/login`,
+    LOGIN: `/auth/admin/login`,
     WEBSITE: `/website`,
     PORTFOLIO: `/portfolio`,
     USERS: '/users',

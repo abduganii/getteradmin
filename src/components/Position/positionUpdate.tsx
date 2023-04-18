@@ -42,7 +42,7 @@ export default function PositionUpdate() {
                 }
                 if (response?.response) {
                     if (response.response.status == 401) {
-                        removeCookie('access_token_user')
+                        removeCookie('accessAdminToken')
                         navgate(routes.HOME)
                     }
                 }
