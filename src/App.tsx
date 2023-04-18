@@ -54,37 +54,34 @@ function App() {
 
 
   return (
-    <>
-      {/* <GlobalContext.Provider value={{ page, setPage: hendleSetPage }}>
-        {token ? <Home /> : <LoginPage />}
-      </GlobalContext.Provider> */}
-      <Routes>
-        <Route path={routes.WEBSITE} element={<WebsitesList />} />
-        <Route path={routes.WEBSITEADD} element={<WebsitesAdd />} />
-        <Route path={routes.WEBSITEUPDATE + "/:id"} element={<WebsitesUpdate />} />
-        <Route path={routes.PORTFOLIO} element={<PortfolioList />} />
-        <Route path={routes.PORTFOLIOADD} element={<PortfolioAdd />} />
-        <Route path={routes.PORTFOLIOUPDATE + '/:id'} element={<PortfolioUpdate />} />
-        <Route path={routes.ARTICLES} element={<ArticlesList />} />
-        <Route path={routes.ARTICLESSHOW} element={<ArticlesShow />} />
-        <Route path={routes.ARTICLESADD} element={<ArticlesAdd />} />
-        <Route path={routes.ARTICLESUPDATE + '/:id'} element={<ArticlesUpdate />} />
-        <Route path={routes.NEWS} element={<Newslist />} />
-        <Route path={routes.ADDNEWS} element={<NewsAddFrom />} />
-        <Route path={routes.UPDATENEWS + "/:id"} element={<NewsFrom />} />
-        <Route path={routes.USERS} element={<Userslist />} />
-        <Route path={routes.CATEGORIES} element={<Categorylist />} />
-        <Route path={routes.ADDCATEGORIES} element={<CategoryAdd />} />
-        <Route path={routes.UPDATECATEGORIES + "/:id"} element={<CategoryUpdate />} />
-        <Route path={routes.POSITION} element={<Positionlist />} />
-        <Route path={routes.ADDPOSITION} element={<PositionAdd />} />
-        <Route path={routes.UPDATEPOSITION + "/:id"} element={<PositionUpdate />} />
 
-        <Route path={routes.ORDER} element={<OrderList />} />
-        <Route path={routes.ABOUTUS} element={<AboutUs />} />
-        <Route path={routes.CONTACTS} element={<Contact />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path={routes.WEBSITE} element={<WebsitesList />} />
+      <Route path={routes.WEBSITEADD} element={<WebsitesAdd />} />
+      <Route path={routes.WEBSITEUPDATE + "/:id"} element={<WebsitesUpdate />} />
+      <Route path={routes.PORTFOLIO} element={<PortfolioList />} />
+      <Route path={routes.PORTFOLIOADD} element={<PortfolioAdd />} />
+      <Route path={routes.PORTFOLIOUPDATE + '/:id'} element={<PortfolioUpdate />} />
+      <Route path={routes.ARTICLES} element={<ArticlesList />} />
+      <Route path={routes.ARTICLESSHOW} element={<ArticlesShow />} />
+      <Route path={routes.ARTICLESADD} element={<ArticlesAdd />} />
+      <Route path={routes.ARTICLESUPDATE + '/:id'} element={<ArticlesUpdate />} />
+      <Route path={routes.NEWS} element={<Newslist />} />
+      <Route path={routes.ADDNEWS} element={<NewsAddFrom />} />
+      <Route path={routes.UPDATENEWS + "/:id"} element={<NewsFrom />} />
+      <Route path={routes.USERS} element={<Userslist />} />
+      <Route path={routes.CATEGORIES} element={<Categorylist />} />
+      <Route path={routes.ADDCATEGORIES} element={<CategoryAdd />} />
+      <Route path={routes.UPDATECATEGORIES + "/:id"} element={<CategoryUpdate />} />
+      <Route path={routes.POSITION} element={<Positionlist />} />
+      <Route path={routes.ADDPOSITION} element={<PositionAdd />} />
+      <Route path={routes.UPDATEPOSITION + "/:id"} element={<PositionUpdate />} />
+
+      <Route path={routes.ORDER} element={<OrderList />} />
+      <Route path={routes.ABOUTUS} element={<AboutUs />} />
+      <Route path={routes.CONTACTS} element={<Contact />} />
+    </Routes>
+
   );
 }
 
