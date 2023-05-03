@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-froala-wysiwyg": "^4.0.17",
     "react-hook-form": "^7.43.5",
+    "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-simplemde-editor": "^5.2.0",

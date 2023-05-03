@@ -7,13 +7,14 @@ import clcik from "../../assets/images/Groupclick.svg"
 import routes from '../../shared/constants/routes'
 import { deleteCategory, GetCategory } from '../../shared/api/categories'
 
-
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Categorylist() {
     const navigate = useNavigate()
     const x: any = useRef()
     const [categories, setCategories] = useState<any>('')
     const [loading, setLoading] = useState(true)
+    const [change, setChange] = useState(true)
     const [tr, settr] = useState<string | boolean>("")
     useEffect(() => {
         const fetchWebSite = async () => {
@@ -34,12 +35,13 @@ export default function Categorylist() {
         deleteCategory(id)
             .then((response: any) => {
                 setLoading(false)
+                setChange(!change)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
                 }
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
     }
@@ -78,6 +80,7 @@ export default function Categorylist() {
                 </>
                 }
             </ul>
+            <Toaster />
         </div >
     )
 }

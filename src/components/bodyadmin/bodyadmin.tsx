@@ -33,6 +33,7 @@ export default function Bodyadmin() {
                 <Navbar />
                 <div className='Bodyadmin-left'>
                     <Routes>
+                        <Route path='/index' element={<h1>home</h1>} />
                         <Route path={routes.WEBSITE} element={<WebsitesList />} />
                         <Route path={routes.WEBSITEADD} element={<WebsitesAdd />} />
                         <Route path={routes.WEBSITEUPDATE + "/:id"} element={<WebsitesUpdate />} />

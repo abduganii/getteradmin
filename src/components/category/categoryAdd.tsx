@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { createProtfoio } from '../../shared/api/portfolioapi';
 import { removeCookie } from 'typescript-cookie';
 import { createCategory } from '../../shared/api/categories';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function CategoryAdd() {
     const [loading, setloading] = useState<any>(false)
@@ -16,17 +16,17 @@ export default function CategoryAdd() {
 
     const HandleAddCategoriy = async (data: any) => {
         setloading(true)
-        console.log(data)
+
         await createCategory(data)
             .then((response: any) => {
 
                 setloading(false)
                 if (response.status == 201) {
                     setloading(true)
-                    alert("item creates")
+                    toast("item creates")
                     navgate(routes.CATEGORIES)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
 
@@ -39,7 +39,7 @@ export default function CategoryAdd() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
             })
     }
 
@@ -73,6 +73,7 @@ export default function CategoryAdd() {
 
                     </div>
                 </div>
+                <Toaster />
             </form>
         )
     }

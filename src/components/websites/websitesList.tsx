@@ -7,6 +7,7 @@ import clcik from "../../assets/images/Groupclick.svg"
 import routes from '../../shared/constants/routes'
 import { deleteWebsite, GetWebSite, IscheckedWebSite } from '../../shared/api/websiteapi'
 import { NavLink } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function WebsitesList() {
@@ -19,6 +20,8 @@ export default function WebsitesList() {
     const link: any = useRef()
     const [data, setData] = useState<any>()
     const [loading, setLoading] = useState(true)
+    const [updated, setUpdated] = useState(false)
+    const [isActive, setIsActive] = useState<any>("")
 
     useEffect(() => {
         const fetchWebSite = async (isActive: any) => {
@@ -27,32 +30,29 @@ export default function WebsitesList() {
             setLoading(false)
         }
 
-        fetchWebSite('')
+        fetchWebSite(isActive)
             .then((err) => {
                 console.log("err");
             })
 
-    }, []);
-    const fetchWebSite = async (isActive: any) => {
-        setLoading(true)
-        const data = await GetWebSite(isActive);
-        setData(data)
-        setLoading(false)
-    }
+    }, [updated, isActive]);
+
 
 
     const handleDelete = (id: any) => {
         setLoading(true)
+
         deleteWebsite(id)
             .then((response: any) => {
                 setLoading(false)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
+                    setUpdated(!updated)
                 }
 
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
 
@@ -65,13 +65,14 @@ export default function WebsitesList() {
         IscheckedWebSite(id, { isActive: isActive })
             .then((response: any) => {
                 setLoading(false)
+                setUpdated(!updated)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("update")
                 }
 
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
     }
@@ -85,21 +86,21 @@ export default function WebsitesList() {
                     <button className='Filter-btn'>Фильтр</button>
                     <ul className='Filter-selects'>
                         <li className='Filter-selects-item itemChecked' ref={all} ><button className='navabrItembtn' onClick={(e: any) => {
-                            fetchWebSite("")
+                            setIsActive("")
                             all.current.classList.add("itemChecked")
                             trues.current.classList.remove("itemChecked")
                             falses.current.classList.remove("itemChecked")
 
                         }}> Все сайты</button ></li>
                         <li className='Filter-selects-item' ref={trues} ><button className='navabrItembtn' onClick={(e: any) => {
-                            fetchWebSite(true)
+                            setIsActive(true)
                             all.current.classList.remove("itemChecked")
                             trues.current.classList.add("itemChecked")
                             falses.current.classList.remove("itemChecked")
                         }}> Подтвержденный</button ></li>
                         <li className='Filter-selects-item' ref={falses} >
                             <button className='navabrItembtn' onClick={(e: any) => {
-                                fetchWebSite(false)
+                                setIsActive(false)
                                 all.current.classList.remove("itemChecked")
                                 trues.current.classList.remove("itemChecked")
                                 falses.current.classList.add("itemChecked")
@@ -147,6 +148,7 @@ export default function WebsitesList() {
                     ))}
                 </>}
             </ul>
+            <Toaster />
         </div >
     )
 }

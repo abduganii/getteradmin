@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import routes from '../../shared/constants/routes';
 import { GetWebSitebyid, UpdateWebSite } from '../../shared/api/websiteapi';
 import { removeCookie } from 'typescript-cookie';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function WebsitesUpdate() {
@@ -50,10 +51,10 @@ export default function WebsitesUpdate() {
             .then((response: any) => {
                 setloading(false)
                 if (response.status == 200) {
-                    alert("updated seccesfull")
+                    toast("updated seccesfull")
                     navgate(routes.WEBSITE)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
 
@@ -65,7 +66,7 @@ export default function WebsitesUpdate() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
             })
     }
     const hendleimg = (e: any) => {
@@ -102,6 +103,7 @@ export default function WebsitesUpdate() {
                         </div>
                     </div>
                 </form>
+                <Toaster />
             </div>
         )
     } else {

@@ -13,7 +13,7 @@ import { getCookie, removeCookie } from 'typescript-cookie';
 import { createArticles } from '../../shared/api/articles';
 import { GetCategory } from '../../shared/api/categories';
 
-
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function ArticlesAdd() {
     const params = useParams()
@@ -58,10 +58,10 @@ export default function ArticlesAdd() {
             .then((response: any) => {
                 setloading(false)
                 if (response.status == 200 || response.status == 201) {
-                    alert("item creates")
+                    toast("item creates")
                     navgate(routes.ARTICLES)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
                     if (response.response.status == 401) {
@@ -73,7 +73,7 @@ export default function ArticlesAdd() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
             })
     }
     const hendleimg = (e: any) => {
@@ -136,6 +136,7 @@ export default function ArticlesAdd() {
                         })} />
                     </form>
                 }</>}
+            <Toaster />
         </div>
     )
 }

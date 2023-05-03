@@ -6,6 +6,7 @@ import routes from '../../shared/constants/routes';
 
 import { GetCategorybyId, UpdateCategory } from '../../shared/api/categories';
 import { removeCookie } from 'typescript-cookie';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function CategoryUpdate() {
@@ -33,10 +34,10 @@ export default function CategoryUpdate() {
         await UpdateCategory({ title: title }, id)
             .then((response: any) => {
                 if (response.status == 200) {
-                    alert("updated seccesfull")
+                    toast("updated seccesfull")
                     navgate(routes.CATEGORIES)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
                     if (response.response.status == 401) {
@@ -49,7 +50,7 @@ export default function CategoryUpdate() {
             })
             .catch(error => {
 
-                alert(error.message)
+                toast(error.message)
             })
 
     }
@@ -83,6 +84,7 @@ export default function CategoryUpdate() {
                     <button className='ServicesFrom_top-Publish'  >Опубликовывать</button>
                 </div>
                 <h1>Loading</h1>
+                <Toaster />
             </>
         )
     }

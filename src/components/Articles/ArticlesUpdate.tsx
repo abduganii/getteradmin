@@ -7,9 +7,11 @@ import routes from '../../shared/constants/routes';
 import { GetArticlesbyid, UpdateArticles } from '../../shared/api/articles';
 import { GetCategory } from '../../shared/api/categories';
 import { getCookie, removeCookie } from 'typescript-cookie';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function ArticlesUpdate() {
+
     const { id } = useParams()
     const [imgFile, setImgFile] = useState<any>()
     const [tag2, setTags2] = useState('')
@@ -31,7 +33,7 @@ export default function ArticlesUpdate() {
             setTitle(data?.title)
             setText(data?.description)
             setImages(data?.avatar?.url)
-            console.log(data?.category?.id)
+
         }
         const fetcCategory = async () => {
             const data = await GetCategory();
@@ -69,10 +71,10 @@ export default function ArticlesUpdate() {
         await UpdateArticles(formData, id)
             .then((response: any) => {
                 if (response.status == 200) {
-                    alert("updated seccesfull")
+                    toast("updated seccesfull")
                     navgate(routes.ARTICLES)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
                     if (response.response.status == 401) {
@@ -84,7 +86,7 @@ export default function ArticlesUpdate() {
             })
             .catch(error => {
 
-                alert(error.message)
+                toast(error.message)
             })
 
     }
@@ -157,6 +159,7 @@ export default function ArticlesUpdate() {
 
                     <input className='ServicesFrom_from-textTextarea' value={text} onChange={(e: any) => setText(e.target.value)} type="text" placeholder='Текст' />
                 </form>
+                <Toaster />
             </div>
         )
     } else {

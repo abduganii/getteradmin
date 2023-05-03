@@ -7,6 +7,7 @@ import clcik from "../../assets/images/Groupclick.svg"
 import routes from '../../shared/constants/routes'
 import { deleteArticles, GetArticles, IscheckedArticles } from '../../shared/api/articles'
 import { getCookie } from 'typescript-cookie'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function ArticlesList() {
     const [tr, settr] = useState<string | boolean>("")
@@ -17,7 +18,7 @@ export default function ArticlesList() {
     const falses: any = useRef()
     const [data, setData] = useState<any>()
     const [loading, setLoading] = useState(true)
-
+    const [change, setChange] = useState(true)
     useEffect(() => {
         const fetchWebSite = async () => {
             const data = await GetArticles('');
@@ -42,12 +43,13 @@ export default function ArticlesList() {
         deleteArticles(id)
             .then((response: any) => {
                 setLoading(false)
+                setChange(!change)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
                 }
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
     }
@@ -59,12 +61,12 @@ export default function ArticlesList() {
             .then((response: any) => {
                 setLoading(false)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
                 }
 
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
     }
@@ -143,6 +145,7 @@ export default function ArticlesList() {
                     ))}
                 </>}
             </ul>
+            <Toaster />
         </div>
     )
 }

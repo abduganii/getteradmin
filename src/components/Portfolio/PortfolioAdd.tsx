@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { createProtfoio } from '../../shared/api/portfolioapi';
 import { removeCookie } from 'typescript-cookie';
 
-
+import toast, { Toaster } from 'react-hot-toast';
 export default function PortfolioAdd() {
 
     const [imgFile, setImgFile] = useState<any>()
@@ -29,10 +29,10 @@ export default function PortfolioAdd() {
                 setloading(false)
                 if (response.status == 201) {
                     setloading(true)
-                    alert("item creates")
+                    toast("item creates")
                     navgate(routes.PORTFOLIO)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
 
@@ -45,7 +45,7 @@ export default function PortfolioAdd() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
             })
     }
     const hendleimg = (e: any) => {
@@ -100,6 +100,7 @@ export default function PortfolioAdd() {
                         </div>
                     </div>
                 </div>
+                <Toaster />
             </form>
         )
     }

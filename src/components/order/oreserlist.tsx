@@ -8,14 +8,14 @@ import routes from '../../shared/constants/routes'
 import { DeleteOrder, GetOrders } from '../../shared/api/order'
 import { getCookie } from 'typescript-cookie'
 
-
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function OrderList() {
     const [tr, settr] = useState<string | boolean>("")
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([])
-
+    const [change, setChange] = useState<any>(true)
     const navigate = useNavigate()
     const x: any = useRef()
     useEffect(() => {
@@ -30,20 +30,21 @@ export default function OrderList() {
                 console.log(err);
             })
 
-    }, []);
+    }, [change]);
 
     const handleDelete = async (id: any) => {
         setLoading(true)
         DeleteOrder(id)
             .then((response: any) => {
                 setLoading(false)
+                setChange(!change)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
                 }
 
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
 
@@ -85,6 +86,7 @@ export default function OrderList() {
                     ))}
                 </>}
             </ul>
+            <Toaster />
         </div>
     )
 }

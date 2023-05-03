@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import routes from '../../shared/constants/routes';
 import { GetPortfoliobyid, UpdateProtfoio } from '../../shared/api/portfolioapi';
 import { removeCookie } from 'typescript-cookie';
-
+import toast, { Toaster } from 'react-hot-toast';
 export default function PortfolioUpdate() {
     const { id } = useParams<any>()
     const [loading, setloading] = useState<any>(false)
@@ -21,7 +21,7 @@ export default function PortfolioUpdate() {
         const fetchWebSite = async () => {
             const { data } = await GetPortfoliobyid(id);
 
-            console.log(data)
+
             setDatas(data)
             setLink(data?.link)
             setCreator(data?.creator)
@@ -53,10 +53,10 @@ export default function PortfolioUpdate() {
 
                 setloading(false)
                 if (response.status == 200) {
-                    alert("updated seccesfull")
+                    toast("updated seccesfull")
                     navgate(routes.PORTFOLIO)
                 } else {
-                    alert("failed ")
+                    toast("failed ")
                 }
                 if (response?.response) {
                     if (response?.response?.status == 401) {
@@ -69,7 +69,7 @@ export default function PortfolioUpdate() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
             })
     }
     const hendleimg = (e: any) => {
@@ -107,6 +107,7 @@ export default function PortfolioUpdate() {
                         </div>
                     </div>
                 </form>
+                <Toaster />
             </div>
         )
     } else {

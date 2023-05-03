@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { createWebSite } from '../../shared/api/websiteapi';
 import { removeCookie } from 'typescript-cookie';
 
-
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function WebsitesAdd() {
     const params = useParams()
@@ -22,7 +22,7 @@ export default function WebsitesAdd() {
             .then((response: any) => {
                 if (response.status === 200 || response.status === 201) {
                     setloading(false)
-                    alert("item ccreates")
+                    toast("item ccreates")
                     navgate(routes.WEBSITE)
                 }
                 if (response?.response) {
@@ -34,7 +34,7 @@ export default function WebsitesAdd() {
             })
             .catch(error => {
                 setloading(false)
-                alert(error.message)
+                toast(error.message)
 
             })
     }
@@ -88,6 +88,7 @@ export default function WebsitesAdd() {
                         </div>
                     </div>
                 </div>
+                <Toaster />
             </form>
         )
     }

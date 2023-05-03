@@ -7,7 +7,7 @@ import clcik from "../../assets/images/Groupclick.svg"
 import routes from '../../shared/constants/routes'
 
 import { deleteProtfoio, GetPortfolio } from '../../shared/api/portfolioapi'
-
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function PortfolioList() {
     const [tr, settr] = useState<string | boolean>("")
@@ -17,7 +17,7 @@ export default function PortfolioList() {
     const btns: any = useRef()
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState<any>()
-    const [change, setChange] = useState<any>()
+    const [change, setChange] = useState<any>(true)
 
 
     useEffect(() => {
@@ -40,18 +40,19 @@ export default function PortfolioList() {
         deleteProtfoio(id)
             .then((response: any) => {
                 setLoading(false)
+                setChange(!change)
                 if (response?.status === 204) {
-                    alert("deleted")
+                    toast("deleted")
+
                 } else {
-                    alert("failed")
+                    toast("failed")
                 }
 
             })
             .catch(error => {
-                alert(error.message)
+                toast(error.message)
                 setLoading(false)
             })
-        setChange("ok")
 
     }
 
@@ -103,6 +104,7 @@ export default function PortfolioList() {
                     ))}
                 </>}
             </ul>
+            <Toaster />
         </div>
     )
 }
