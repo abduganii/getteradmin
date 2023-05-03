@@ -31,7 +31,7 @@ export default function ArticlesList() {
                 console.log("err");
             })
 
-    }, []);
+    }, [change]);
     const fetchWebSite = async (isActive: any) => {
         setLoading(true)
         const data = await GetArticles(isActive)

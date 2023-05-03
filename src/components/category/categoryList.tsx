@@ -28,7 +28,7 @@ export default function Categorylist() {
                 console.log("err");
             })
 
-    }, []);
+    }, [change]);
 
     const handleDelete = (id: any) => {
         setLoading(true)
