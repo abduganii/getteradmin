@@ -59,7 +59,7 @@ export default function ArticlesUpdate() {
         const arr = tag2.split(' ')
 
         if (imgFile) {
-            formData.append("file", imgFile)
+            formData.append("avatar", imgFile)
         }
         formData.append("title", title)
         formData.append("description", text)

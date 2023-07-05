@@ -46,7 +46,7 @@ export default function ArticlesAdd() {
         const cooks = getCookie('admin_id') || ""
         const arr = tag2.split(' ')
         const formData = new FormData()
-        formData.append("file", imgFile)
+        formData.append("avatar", imgFile)
         formData.append("title", data.title)
         formData.append("description", data.description)
         formData.append("tags", JSON.stringify(arr))

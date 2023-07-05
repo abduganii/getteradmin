@@ -19,7 +19,7 @@ export default function PortfolioAdd() {
         setloading(true)
 
         const formData = new FormData()
-        formData.append("file", imgFile)
+        formData.append("avatar", imgFile)
         formData.append("title", data.title)
         formData.append("link", data.link)
         formData.append("creator", data.creator)

@@ -43,7 +43,7 @@ export default function PortfolioUpdate() {
         formData.append("link", link)
         formData.append("creator", creator)
         if (imgFile) {
-            formData.append("file", imgFile)
+            formData.append("avatar", imgFile)
         }
         setloading(true)
 
