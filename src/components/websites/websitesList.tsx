@@ -21,6 +21,7 @@ export default function WebsitesList() {
     const [data, setData] = useState<any>()
     const [loading, setLoading] = useState(true)
     const [updated, setUpdated] = useState(false)
+    const [isDalete, setIsDalete] = useState<boolean>(false)
     const [isActive, setIsActive] = useState<any>("")
 
     useEffect(() => {
@@ -35,33 +36,24 @@ export default function WebsitesList() {
                 console.log("err");
             })
 
-    }, [updated, isActive]);
-
+    }, [isDalete]);
 
 
     const handleDelete = (id: any) => {
-        setLoading(true)
-
         deleteWebsite(id)
             .then((response: any) => {
-                setLoading(false)
                 if (response?.status === 204) {
                     toast("deleted")
                     setUpdated(!updated)
                 }
-
+                setIsDalete(!isDalete)
             })
             .catch(error => {
                 toast(error.message)
-                setLoading(false)
             })
-
-
     }
     const handleIschecked = (id: any, isActive: boolean) => {
-
         setLoading(true)
-
         IscheckedWebSite(id, { isActive: isActive })
             .then((response: any) => {
                 setLoading(false)
@@ -69,15 +61,13 @@ export default function WebsitesList() {
                 if (response?.status === 204) {
                     toast("update")
                 }
-
+                setIsDalete(!isDalete)
             })
             .catch(error => {
                 toast(error.message)
                 setLoading(false)
             })
     }
-
-
 
     return (
         <div>
@@ -129,7 +119,7 @@ export default function WebsitesList() {
                         <li className='list-item'>
                             <input type="checkbox" />
 
-                            <div className='list-item-text  list-item-div2'><img src={e?.avatar?.url || img} alt="" /></div>
+                            <div className='list-item-text  list-item-div2'><img src={e?.avatar || img} alt="" /></div>
                             <p className='list-item-text'>{e?.title}</p>
                             <p className='list-item-text'>{e?.creator}</p>
                             <Link ref={link} to={e?.link} className='list-item-text'>{e?.link}</Link>

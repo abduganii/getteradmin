@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Outlet, Route, Routes } from 'react-router-dom'
 import routes from '../../shared/constants/routes'
 import Navbar from '../navbar/navbar'
 import NewsFrom from '../newsFrom/NewsFrom'
@@ -32,33 +32,7 @@ export default function Bodyadmin() {
             <div className="container">
                 <Navbar />
                 <div className='Bodyadmin-left'>
-                    <Routes>
-                        <Route path='/index' element={<h1>home</h1>} />
-                        <Route path={routes.WEBSITE} element={<WebsitesList />} />
-                        <Route path={routes.WEBSITEADD} element={<WebsitesAdd />} />
-                        <Route path={routes.WEBSITEUPDATE + "/:id"} element={<WebsitesUpdate />} />
-                        <Route path={routes.PORTFOLIO} element={<PortfolioList />} />
-                        <Route path={routes.PORTFOLIOADD} element={<PortfolioAdd />} />
-                        <Route path={routes.PORTFOLIOUPDATE + '/:id'} element={<PortfolioUpdate />} />
-                        <Route path={routes.ARTICLES} element={<ArticlesList />} />
-                        <Route path={routes.ARTICLESSHOW} element={<ArticlesShow />} />
-                        <Route path={routes.ARTICLESADD} element={<ArticlesAdd />} />
-                        <Route path={routes.ARTICLESUPDATE + '/:id'} element={<ArticlesUpdate />} />
-                        <Route path={routes.NEWS} element={<Newslist />} />
-                        <Route path={routes.ADDNEWS} element={<NewsAddFrom />} />
-                        <Route path={routes.UPDATENEWS + "/:id"} element={<NewsFrom />} />
-                        <Route path={routes.USERS} element={<Userslist />} />
-                        <Route path={routes.CATEGORIES} element={<Categorylist />} />
-                        <Route path={routes.ADDCATEGORIES} element={<CategoryAdd />} />
-                        <Route path={routes.UPDATECATEGORIES + "/:id"} element={<CategoryUpdate />} />
-                        <Route path={routes.POSITION} element={<Positionlist />} />
-                        <Route path={routes.ADDPOSITION} element={<PositionAdd />} />
-                        <Route path={routes.UPDATEPOSITION + "/:id"} element={<PositionUpdate />} />
-
-                        <Route path={routes.ORDER} element={<OrderList />} />
-                        <Route path={routes.ABOUTUS} element={<AboutUs />} />
-                        <Route path={routes.CONTACTS} element={<Contact />} />
-                    </Routes>
+                    <Outlet />
                 </div>
             </div>
         </div>

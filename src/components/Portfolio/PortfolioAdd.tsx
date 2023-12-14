@@ -8,6 +8,7 @@ import { createProtfoio } from '../../shared/api/portfolioapi';
 import { removeCookie } from 'typescript-cookie';
 
 import toast, { Toaster } from 'react-hot-toast';
+import { ImageUpload } from '../../utils/imageUpload';
 export default function PortfolioAdd() {
 
     const [imgFile, setImgFile] = useState<any>()
@@ -18,12 +19,7 @@ export default function PortfolioAdd() {
     const HandleAddPortfolio = async (data: any) => {
         setloading(true)
 
-        const formData = new FormData()
-        formData.append("avatar", imgFile)
-        formData.append("title", data.title)
-        formData.append("link", data.link)
-        formData.append("creator", data.creator)
-        await createProtfoio(formData)
+        await createProtfoio({ title: data?.title, link: data?.link, creator: data?.creator, avatar: imgFile })
             .then((response: any) => {
 
                 setloading(false)
@@ -48,9 +44,10 @@ export default function PortfolioAdd() {
                 toast(error.message)
             })
     }
-    const hendleimg = (e: any) => {
+    const hendleimg = async (e: any) => {
         if (e.target.files[0]) {
-            setImgFile(e.target.files[0])
+            const data = await ImageUpload(e.target.files[0])
+            setImgFile(data)
         }
     }
     if (loading) {
@@ -80,7 +77,7 @@ export default function PortfolioAdd() {
                         <div className='mid2-div'>
                             <label className='ServicesFrom_from-img img12' >
                                 <input className='img2-img' type={"file"} onChange={hendleimg} accept='image/*' />
-                                <img className='ServicesFrom_from-imgvie' src={imgFile ? URL.createObjectURL(imgFile) : img} alt="" width={254} height={179} />
+                                <img className='ServicesFrom_from-imgvie' src={imgFile ? imgFile : img} alt="" width={254} height={179} />
                                 <img className='ServicesFrom_from-imgvie imgplus' src={imgplus} alt="" width={60} />
                             </label>
                         </div>

@@ -80,13 +80,12 @@ export default function PortfolioList() {
                     <p className='list-itemtop-text'>Data</p>
                     <img className='list-itemtop-text list-itemtop-textimg' src={icons} alt="" />
                     <p className='list-itemtop-text'>Action</p>
-
                 </li>
                 {loading ? <h1>loading</h1> : <>
                     {data && data?.items.map((e: any) => (
                         <li className='list-item'>
                             <input type="checkbox" />
-                            <div className='list-item-text  list-item-div2' ><img src={e?.avatar?.url} alt="" /></div>
+                            <div className='list-item-text  list-item-div2' ><img src={e?.avatar} alt="" /></div>
                             <p className='list-item-text'>{e?.title}</p>
                             <p className='list-item-text'>{e?.creator}</p>
                             <Link ref={link} to={e?.link} className='list-item-text'>{e?.link}</Link>

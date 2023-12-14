@@ -18,7 +18,7 @@ export default function WebsitesAdd() {
 
     const HandleAddWebsite = async (data: any) => {
         setloading(true)
-        await createWebSite(data)
+        await createWebSite({ name: "getter", phone: "getter", ...data })
             .then((response: any) => {
                 if (response.status === 200 || response.status === 201) {
                     setloading(false)
@@ -70,7 +70,6 @@ export default function WebsitesAdd() {
                             <label className='ServicesFrom_from-img img12' >
                                 <img className='ServicesFrom_from-imgvie imgplus' src={imgplus} alt="" width={60} />
                             </label>
-
                         </div>
                         <div className='ServicesFrom_from-mid-left'>
                             <input className='ServicesFrom_from-mid-inputtitle inputtitle2' type="text" placeholder='Название сайта' {...register("title", {

@@ -6,6 +6,7 @@ import routes from '../../shared/constants/routes';
 import { GetWebSitebyid, UpdateWebSite } from '../../shared/api/websiteapi';
 import { removeCookie } from 'typescript-cookie';
 import toast, { Toaster } from 'react-hot-toast';
+import { ImageUpload } from '../../utils/imageUpload';
 
 
 export default function WebsitesUpdate() {
@@ -22,12 +23,11 @@ export default function WebsitesUpdate() {
     useEffect(() => {
         const fetchWebSite = async () => {
             const { data } = await GetWebSitebyid(id);
-
             setDatas(data)
             setLink(data?.link)
             setCreator(data?.creator)
             setTitle(data?.title)
-            setImages(data?.avatar?.url)
+            setImages(data?.avatar)
         }
 
         fetchWebSite()
@@ -38,16 +38,8 @@ export default function WebsitesUpdate() {
     }, []);
 
     const Handleupdatewebsite = async () => {
-        const formData = new FormData()
-        formData.append("title", title)
-        formData.append("link", link)
-        formData.append("creator", creator)
-        if (imgFile) {
-            formData.append("avatar", imgFile)
-        }
-
         setloading(true)
-        await UpdateWebSite(formData, id)
+        await UpdateWebSite({ title: title, link: link, avatar: imgFile, creator: creator }, id)
             .then((response: any) => {
                 setloading(false)
                 if (response.status == 200) {
@@ -69,9 +61,11 @@ export default function WebsitesUpdate() {
                 toast(error.message)
             })
     }
-    const hendleimg = (e: any) => {
+    const hendleimg = async (e: any) => {
         if (e.target.files[0]) {
-            setImgFile(e.target.files[0])
+            const data = await ImageUpload(e.target.files[0])
+
+            setImgFile(data)
         }
     }
     if (datas) {
@@ -89,7 +83,7 @@ export default function WebsitesUpdate() {
                         <div className='mid2-div'>
                             <label className='ServicesFrom_from-img img12' >
                                 <input className='img2-img' type={"file"} onChange={hendleimg} />
-                                <img className='ServicesFrom_from-imgvie' src={images ? imgFile ? URL.createObjectURL(imgFile) : images : imgFile ? URL.createObjectURL(imgFile) : img} alt="" width={254} />
+                                <img className='ServicesFrom_from-imgvie' src={images ? imgFile ? imgFile : images : imgFile ? imgFile : img} alt="" width={254} />
                                 <img className='ServicesFrom_from-imgvie imgplus' src={imgplus} alt="" width={60} />
                             </label>
 

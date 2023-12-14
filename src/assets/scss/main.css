@@ -322,6 +322,14 @@ main {
   background-image: url("./assets/images/article.svg");
   margin-right: 19px;
 }
+.navbar-item:nth-child(9) .navbar-link::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("./assets/images/article.svg");
+  margin-right: 19px;
+}
 .navbar-link {
   color: #FFFFFF;
   opacity: 0.6;
@@ -450,6 +458,13 @@ main {
   opacity: 1;
 }
 
+.list {
+  height: calc(100vh - 115px);
+  overflow-y: scroll;
+}
+.list::-webkit-scrollbar {
+  width: 0px;
+}
 .list-itemtop {
   width: 100%;
   display: flex;
@@ -1352,6 +1367,96 @@ main {
   line-height: 150%;
   color: #000000;
   margin-bottom: 32px;
+}
+
+.login {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 165px;
+}
+.login-from {
+  background: #FFFFFF;
+  border-radius: 9px;
+  width: 100%;
+  max-width: 480px;
+  padding: 70px 105px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+.login-text {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #000000;
+  width: 167px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.login-input {
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 10px;
+  width: 100%;
+  display: inline-block;
+  padding: 18px 15px;
+  padding-left: 47px;
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+  background-image: url("./assets/images/passwordIcons.svg");
+  background-repeat: no-repeat;
+  background-position: left 15px center;
+}
+.login-input:nth-child(2) {
+  margin-bottom: 5px;
+  background-image: url("./assets/images/loginIcons.svg");
+}
+.login-input::-moz-placeholder {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}
+.login-input:-ms-input-placeholder {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}
+.login-input::placeholder {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}
+.login-btn {
+  width: 100%;
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 23px;
+  border: none;
+  color: #FFFFFF;
+  background: #7000FF;
+  border-radius: 12px;
+  margin-top: 59px;
 }
 
 .fr-sticky-off {
