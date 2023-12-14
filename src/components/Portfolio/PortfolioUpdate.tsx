@@ -46,7 +46,7 @@ export default function PortfolioUpdate() {
                     toast("updated seccesfull")
                     navgate(routes.PORTFOLIO)
                 } else {
-                    toast("failed ")
+                    toast("failed")
                 }
                 if (response?.response) {
                     if (response?.response?.status == 401) {
